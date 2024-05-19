@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增紀錄</title>
+<link rel="stylesheet" href="/css/bootstrap.css"/>
+<link rel="stylesheet" href="/css/bootstrap-datepicker.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-8 col-lg-offset-2">
+                <h2>新增紀錄</h2>
+                <hr>
+                <form method="post" action="/account">
+                    <div class="form-group">
+                        <label for="item">事項</label>
+                        <input 
+                        name="title"
+                        type="text"
+                        class="form-control"
+                        id="item"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="time" >發生時間</label>
+                        <input 
+                        name="time"
+                        type="text"
+                        class="form-control"
+                        id="time">
+                    </div>
+                    <div class="form-group">
+                        <label for="type" >類型</label>
+                        <select name="type" class="form-control" id="type">
+                            <option value="-1">支出</option>
+                            <option value="1">收入</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="account" >金額</label>
+                        <input 
+                        name="account"
+                        type="text"
+                        class="form-control"
+                        id="account">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="remarks" >備註</label>
+                        <textarea 
+                        name="remarks"
+                        class="form-control" 
+                        id="remarks"></textarea>
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary btn-block">新增</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-datepicker.min.js"></script>
+    <script src="/js/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "今天下雨了"
+    },
+    {
+      "id": 3,
+      "title": "Unicorn is awesome"
+    }
+  ],
+  "user": {}
+}
