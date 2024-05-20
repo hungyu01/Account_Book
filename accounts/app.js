@@ -4,8 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRouter = require('./routes/web/index');
+//導入 account api 路由文件
+const accountRouter = require('./routes/api/account');
 
 var app = express();
 
@@ -20,6 +21,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter); //記帳本功能頁面
+app.use('/api', accountRouter); 
+
 // app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
