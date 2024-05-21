@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/web/index');
+const authRouter = require('./routes/web/auth');
 //導入 account api 路由文件
 const accountRouter = require('./routes/api/account');
 
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter); //記帳本功能頁面
+app.use('/', authRouter); //註冊功能頁面
 app.use('/api', accountRouter); 
 
 
