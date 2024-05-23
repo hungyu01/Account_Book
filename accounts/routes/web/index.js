@@ -5,12 +5,7 @@ const moment = require('moment');
 const AccountModel = require('../../models/AccountModel');
 
 //宣告登入檢測的 middleware
-const checkLoginMiddleware = (req, res, next)=>{
-  if(!req.session.username){
-    return res.redirect('/login');
-  }
-  next();
-}
+let checkLoginMiddleware = require('../../middleware/checkLoginMiddleware')
 
 // 記帳本
 router.get('/account', checkLoginMiddleware, async function(req, res, next) {

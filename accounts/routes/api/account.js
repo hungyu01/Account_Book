@@ -1,32 +1,43 @@
-var express = require('express');
-var router = express.Router();
-
+const express = require('express');
+const router = express.Router();
+// 導入 jwt
+const jwt = require('jsonwebtoken');
 
 //導入 moment
 const moment = require('moment');
 const AccountModel = require('../../models/AccountModel');
-
+//導入中間件
+let checkTokenMiddleware = require('../../middleware/checkTokenMiddleware')
 // 記帳本
-router.get('/account', async function(req, res, next) {
-  try {
-    // 從資料庫中讀取所有的帳單訊息，按時間降序排列
-    let accounts = await AccountModel.find().sort({ time: -1 }).exec();
-    res.json({
-        code:'0000',
-        msg:'讀取成功',
-        data: accounts
-    });
-  } catch (error) {
-    res.json({
+router.get('/account', checkTokenMiddleware, async function(req, res, next) {
+    try {
+        // 從資料庫中讀取所有的帳單訊息，按時間降序排列
+        try {
+          let accounts = await AccountModel.find().sort({ time: -1 }).exec();
+          res.json({
+            code: '0000',
+            msg: '讀取成功',
+            data: accounts
+          });
+        } catch (error) {
+          res.json({
+            code: '1000',
+            msg: '讀取失敗',
+            data: null
+          });
+        }
+      
+    } catch (error) {
+      res.json({
         code: '1000',
         msg: '讀取失敗',
         data: null
-    })
-  }
-});
+      });
+    }
+  });
 
 // 新增紀錄
-router.post("/account", async (req, res) => {
+router.post("/account", checkTokenMiddleware, async (req, res) => {
   try {
     // 將日期轉成 Date 類型
     let account = new AccountModel({
@@ -51,7 +62,7 @@ router.post("/account", async (req, res) => {
 });
 
 // 刪除記帳紀錄
-router.delete('/account/:id', async (req, res) => {
+router.delete('/account/:id', checkTokenMiddleware, async (req, res) => {
     try {
       // 獲得 params 的 id 參數
       let id = req.params.id;
@@ -73,7 +84,7 @@ router.delete('/account/:id', async (req, res) => {
   });
 
 // 獲取單個資料訊息
-router.get('/account/:id', async function(req, res) {
+router.get('/account/:id', checkTokenMiddleware, async function(req, res) {
     try {
         // 獲得 params 的 id 參數
         let id = req.params.id;
@@ -103,7 +114,7 @@ router.get('/account/:id', async function(req, res) {
 });
 
 // 更新單筆訊息
-router.patch('/account/:id', async function(req, res){
+router.patch('/account/:id', checkTokenMiddleware, async function(req, res){
     try {
         // 獲得 params 的 id 參數
         let id = req.params.id;

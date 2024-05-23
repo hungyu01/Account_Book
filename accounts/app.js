@@ -8,6 +8,7 @@ const MongoStore = require('connect-mongo');
 const {DBHOST, DBPORT, DBNAME} = require('./config/config');
 const indexRouter = require('./routes/web/index');
 const authRouter = require('./routes/web/auth');
+const authApiRouter = require('./routes/api/auth')
 //導入 account api 路由文件
 const accountRouter = require('./routes/api/account');
 
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter); //記帳本功能頁面
 app.use('/', authRouter); //註冊功能頁面
 app.use('/api', accountRouter); 
+app.use('/api', authApiRouter); 
 
 
 // catch 404 and forward to error handler
