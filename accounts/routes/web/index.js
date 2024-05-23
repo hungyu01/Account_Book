@@ -1,13 +1,20 @@
-var express = require('express');
-var router = express.Router();
-
-
+const express = require('express');
+const router = express.Router();
 //導入 moment
 const moment = require('moment');
 const AccountModel = require('../../models/AccountModel');
 
+//宣告登入檢測的 middleware
+const checkLoginMiddleware = (req, res, next)=>{
+  if(!req.session.username){
+    return res.redirect('/login');
+  }
+  next();
+}
+
 // 記帳本
-router.get('/account', async function(req, res, next) {
+router.get('/account', checkLoginMiddleware, async function(req, res, next) {
+  
   try {
     // 從資料庫中讀取所有的帳單訊息，按時間降序排列
     let accounts = await AccountModel.find().sort({ time: -1 }).exec();
@@ -18,12 +25,12 @@ router.get('/account', async function(req, res, next) {
 });
 
 //新增紀錄
-router.get('/account/create', function(req, res, next) {
+router.get('/account/create', checkLoginMiddleware, function(req, res, next) {
   res.render('create');
 });
 
 // 新增紀錄
-router.post("/account", async (req, res) => {
+router.post("/account", checkLoginMiddleware, async (req, res) => {
   try {
     // 將日期轉成 Date 類型
     let account = new AccountModel({
@@ -42,7 +49,7 @@ router.post("/account", async (req, res) => {
 });
 
 //刪除記帳紀錄
-router.get('/account/:id', async (req, res) => {
+router.get('/account/:id', checkLoginMiddleware, async (req, res) => {
   try {
     // 獲得 params 的 id 參數
     let id = req.params.id;

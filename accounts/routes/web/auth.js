@@ -41,11 +41,10 @@ router.post('/login', async (req, res) => {
     try {
         // 查詢資料庫密碼
         const user = await UserModel.findOne({ username: username, password: md5(password) });
-
         if (user) {
             req.session.username = user.username;
             req.session._id = user._id;
-            res.render('success', { msg: '登入成功', url: '/login' });
+            res.render('success', { msg: '登入成功', url: '/account' });
         } else {
             res.status(500).send('帳號或密碼錯誤，請稍後再試');
         }
@@ -54,5 +53,14 @@ router.post('/login', async (req, res) => {
         res.status(500).send('帳號或密碼錯誤，請稍後再試');
     }
 });
+
+//退出登入
+router.post('/logout', (req, res)=>{
+    // destory session
+    req.session.destroy(()=>{
+        res.render('success', {msg:'您已登出', url:'/login'})
+    });
+});
+
 
 module.exports = router;
