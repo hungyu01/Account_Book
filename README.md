@@ -42,17 +42,6 @@ $ npm start
 You can [download](https://github.com/hungyu01/Account_Book) the latest installable version of Account Book for Windows, macOS and Linux.
 你可以 [下載](https://github.com/hungyu01/Account_Book) 最後版本的記帳本在 Windows, macOS and Linux 上面。
 
-## Credits
-
-This software uses the following open source packages:
-
-- [Electron](http://electron.atom.io/)
-- [Node.js](https://nodejs.org/)
-- [Marked - a markdown parser](https://github.com/chjj/marked)
-- [showdown](http://showdownjs.github.io/showdown/)
-- [CodeMirror](http://codemirror.net/)
-- Emojis are taken from [here](https://github.com/arvida/emoji-cheat-sheet.com)
-- [highlight.js](https://highlightjs.org/)
 
 ## Learn from here
 
