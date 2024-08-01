@@ -5,9 +5,11 @@
 <br>
 </h1>
 
-<h4 align="center">A simple website can track your expenses.</h4>
-<h4 align="center">一個可以記錄金錢花費的網頁</h4>
-<img src="https://github.com/hungyu01/Account_Book/blob/main/accounts/public/example.png" alt="Account_Book" width="200">
+<h4 align="center">A simple website can track your expenses.
+<br>
+一個可以記錄金錢花費的網頁
+<img src="https://github.com/hungyu01/Account_Book/blob/main/accounts/public/example.png" alt="Account_Book" width="600">
+</h4>
 <hr>
 
 ## Key Features
