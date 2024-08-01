@@ -6,7 +6,6 @@
 </h1>
 
 <h4 align="center">A simple website can track your expenses.</h4>
-<br>
 <h4 align="center">一個可以記錄金錢花費的網頁</h4>
 <hr>
 
