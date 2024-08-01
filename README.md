@@ -18,9 +18,9 @@
 
 ## How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com) 、 [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) and [MongoDB Community Server 6.0.16](https://www.mongodb.com/try/download/community) installed on your computer. From your command line:
 <br>
-要複製並執行此應用程序，需要在電腦上安裝 Git 和 Node.js（與 npm 一起提供）：
+要複製並執行此應用程序，需要在電腦上安裝 Git 、 Node.js（與 npm 一起提供）和 MongoDB：
 
 ```bash
 # Clone this repository
